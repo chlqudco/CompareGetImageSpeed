@@ -1,4 +1,4 @@
-package com.example.comparegetimagespeed
+package com.example.comparegetimagespeed.model
 
 import com.google.gson.annotations.SerializedName
 
