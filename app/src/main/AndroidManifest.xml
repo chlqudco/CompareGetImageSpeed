@@ -15,28 +15,28 @@
         android:theme="@style/Theme.CompareGetImageSpeed"
         tools:targetApi="31">
         <activity
-            android:name=".method1.retrofit.MethodOneRetrofitActivity"
+            android:name=".method4.MethodFourActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".method1.volley.MethodOneVolleyActivity"
+            android:name=".method3.MethodThreeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".method2.retrofit.MethodTwoRetrofitActivity"
+            android:name=".method1.MethodOneActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".method2.volley.MethodTwoVolleyActivity"
+            android:name=".method2.MethodTwoActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

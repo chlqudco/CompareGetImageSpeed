@@ -27,20 +27,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="레트로핏"
-            app:layout_constraintEnd_toStartOf="@id/Method1VolleyButton"
+            android:text="이동하기"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/Method1TextView"
-            tools:ignore="HardcodedText" />
-
-        <Button
-            android:id="@+id/Method1VolleyButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Volley"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/Method1RetrofitButton"
-            app:layout_constraintTop_toTopOf="@+id/Method1RetrofitButton"
             tools:ignore="HardcodedText" />
 
         <View
@@ -70,24 +60,14 @@
             tools:ignore="HardcodedText" />
 
         <Button
-            android:id="@+id/Method2RetrofitButton"
+            android:id="@+id/Method2Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="레트로핏"
-            app:layout_constraintEnd_toStartOf="@id/Method2VolleyButton"
+            android:text="이동하기"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Method2TextView"
-            tools:ignore="HardcodedText" />
-
-        <Button
-            android:id="@+id/Method2VolleyButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Volley"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/Method2RetrofitButton"
-            app:layout_constraintTop_toTopOf="@+id/Method2RetrofitButton"
+            app:layout_constraintTop_toBottomOf="@id/Method2TextView"
             tools:ignore="HardcodedText" />
 
         <View
@@ -97,8 +77,83 @@
             android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Method2RetrofitButton" />
+            app:layout_constraintTop_toBottomOf="@id/Method2Button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Method3TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="방법 3. Coroutine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/Method3Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="이동하기"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Method3TextView"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Method3Button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Method4TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="방법 4. Paging"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/Method4Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="이동하기"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Method4TextView"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Method4Button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

@@ -1,17 +1,16 @@
-package com.example.comparegetimagespeed.method1.retrofit
+package com.example.comparegetimagespeed.method1
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.comparegetimagespeed.R
 import com.example.comparegetimagespeed.URL
 import com.example.comparegetimagespeed.api.ApiService
-import com.example.comparegetimagespeed.databinding.ActivityMethodOneRetrofitBinding
+import com.example.comparegetimagespeed.databinding.ActivityMethodOneBinding
 import com.example.comparegetimagespeed.response.UrlDto
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,9 +18,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MethodOneRetrofitActivity : AppCompatActivity() {
+class MethodOneActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityMethodOneRetrofitBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityMethodOneBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,21 +48,19 @@ class MethodOneRetrofitActivity : AppCompatActivity() {
                             if (response.isSuccessful) {
                                 Log.e("asdasd", response.body()?.images.toString())
                                 val urlList = response.body()?.images ?: listOf()
-                                for (i in 0..7000) {
-                                    val new_list =
-                                        LayoutInflater.from(this@MethodOneRetrofitActivity)
-                                            .inflate(R.layout.item_image, null, false)
-                                    Glide.with(this@MethodOneRetrofitActivity)
+                                for (i in 0..6000) {
+                                    val new_list = LayoutInflater.from(this@MethodOneActivity).inflate(R.layout.item_image, null, false)
+                                    Glide.with(this@MethodOneActivity)
                                         .load(urlList[i].imageUrl)
                                         .into(new_list.findViewById(R.id.item_image))
-                                    new_list.findViewById<TextView>(R.id.item_id).text =
-                                        "${urlList[i].id}"
+                                    new_list.findViewById<TextView>(R.id.item_id).text = "${urlList[i].id}"
                                     binding.oneRetrofitLinearLayout.addView(new_list)
                                 }
                             }
                         }
 
                         override fun onFailure(call: Call<UrlDto>, t: Throwable) {
+                            Log.e("asdasd", "실패")
 
                         }
 

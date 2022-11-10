@@ -4,37 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".method1.retrofit.MethodOneRetrofitActivity">
+    tools:context=".method4.MethodFourActivity">
 
-    <ScrollView
-        android:id="@+id/oneRetrofitScrollView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mainRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/oneRetrofitButton"
+        app:layout_constraintBottom_toTopOf="@id/getImageButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:id="@+id/oneRetrofitLinearLayout"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-
-        </LinearLayout>
-
-
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/oneRetrofitButton"
+        android:id="@+id/getImageButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="받아오기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="받아오기"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/oneRetrofitScrollView"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toBottomOf="@id/mainRecyclerView"
+        tools:ignore="HardcodedText"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
