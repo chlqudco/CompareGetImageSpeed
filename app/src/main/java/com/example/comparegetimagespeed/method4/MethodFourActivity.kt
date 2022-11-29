@@ -2,21 +2,17 @@ package com.example.comparegetimagespeed.method4
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.comparegetimagespeed.R
-import com.example.comparegetimagespeed.URL
-import com.example.comparegetimagespeed.adapter.MainAdapter
+import com.example.comparegetimagespeed.BuildConfig
 import com.example.comparegetimagespeed.adapter.PagingAdapter
 import com.example.comparegetimagespeed.api.ApiService
 import com.example.comparegetimagespeed.databinding.ActivityMethodFourBinding
 import com.example.comparegetimagespeed.model.UrlModel
-import com.example.comparegetimagespeed.response.UrlDto
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -29,8 +25,9 @@ class MethodFourActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMethodFourBinding.inflate(layoutInflater) }
 
-    private val _urlPagingResult = MutableStateFlow<PagingData<UrlModel>>(PagingData.empty())
-    val urlPagingResult: StateFlow<PagingData<UrlModel>> = _urlPagingResult.asStateFlow()
+    private val _urlPagingResult = MutableStateFlow<PagingData<String>>(PagingData.empty())
+    val urlPagingResult: StateFlow<PagingData<String>> = _urlPagingResult.asStateFlow()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +40,7 @@ class MethodFourActivity : AppCompatActivity() {
 
         val adapter = PagingAdapter()
         binding.mainRecyclerView.adapter = adapter
-        binding.mainRecyclerView.layoutManager = GridLayoutManager(this, 1)
+        binding.mainRecyclerView.layoutManager = GridLayoutManager(this, 2)
 
         collectLatestStateFlow(urlPagingResult){
             adapter.submitData(it)
@@ -56,19 +53,18 @@ class MethodFourActivity : AppCompatActivity() {
     }
 
     private fun getImages() {
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.Main).launch {
             getImagesPaging()
-                .cachedIn(this)
+                .cachedIn(lifecycleScope)
                 .collect{
                     _urlPagingResult.value = it
                 }
         }
     }
 
-
-    fun getImagesPaging(): Flow<PagingData<UrlModel>> {
+    private fun getImagesPaging(): Flow<PagingData<String>> {
         val retrofit = Retrofit.Builder()
-            .baseUrl(URL.BASE_URL)
+            .baseUrl(BuildConfig.serverUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -78,9 +74,9 @@ class MethodFourActivity : AppCompatActivity() {
 
         return Pager(
             config = PagingConfig(
-                pageSize = 10,
+                pageSize = 20,
                 enablePlaceholders = false,
-                maxSize = 30
+                maxSize = 60
             ),
             pagingSourceFactory = pagingSourceFactory
         ).flow

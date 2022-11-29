@@ -7,16 +7,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.comparegetimagespeed.databinding.ItemImageBinding
-import com.example.comparegetimagespeed.model.UrlModel
 
-class PagingAdapter: PagingDataAdapter<UrlModel, PagingAdapter.ViewHolder>(DiffCallback) {
+class PagingAdapter: PagingDataAdapter<String, PagingAdapter.ViewHolder>(DiffCallback) {
+
+    var imageNumber = 1
 
     inner class ViewHolder(private val binding: ItemImageBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(model : UrlModel){
-            binding.itemId.text = "${model.id}"
+        fun bind(model : String){
+            binding.itemId.text = "$imageNumber"
+            imageNumber++
 
             Glide.with(binding.itemImage)
-                .load(model.imageUrl)
+                .load(model)
                 .into(binding.itemImage)
         }
     }
@@ -33,13 +35,13 @@ class PagingAdapter: PagingDataAdapter<UrlModel, PagingAdapter.ViewHolder>(DiffC
     }
 
     companion object{
-        private val DiffCallback = object : DiffUtil.ItemCallback<UrlModel>(){
-            override fun areItemsTheSame(oldItem: UrlModel, newItem: UrlModel): Boolean {
-                return oldItem.id == newItem.id
+        private val DiffCallback = object : DiffUtil.ItemCallback<String>(){
+            override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+                return false
             }
 
-            override fun areContentsTheSame(oldItem: UrlModel, newItem: UrlModel): Boolean {
-                return oldItem == newItem
+            override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+                return false
             }
 
         }
